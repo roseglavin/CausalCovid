@@ -1,0 +1,38 @@
+set search_path to mimiciii;
+
+SELECT a.subject_id, a.hadm_id, p.gender, p.dob, l.itemid, l.value, l.valuenum, l.valueuom, l.charttime, li.label, li.fluid, 
+	string_agg(d.icd9_code,',') AS icd9_list, string_agg(di.short_title,',') AS icd9_short_list, string_agg(di.long_title,',') AS icd9_long_list,
+	string_agg(pr.drug,',') AS drug_list,string_agg(pr.drug_name_poe,',') AS drug_name, string_agg(pr.drug_name_generic,',') AS generic_drug_name,
+	string_agg(pr.drug_type,',') AS drug_type, string_agg(pr.formulary_drug_cd,',') AS formulary, string_agg(pr.ndc,',') AS ndc, 
+	string_agg(pr.gsn,',') AS gsn 
+FROM admissions a 
+INNER JOIN 
+		(SELECT dx.subject_id, dx.hadm_id, dx.icd9_code
+		FROM diagnoses_icd AS dx,
+			(SELECT subject_id, hadm_id, icd9_code
+			FROM diagnoses_icd
+			WHERE (icd9_code between '25000' and '25900') OR (icd9_code between '49000' and'49600')
+                              OR (icd9_code between '40100' and '40500')
+			GROUP BY subject_id, hadm_id, icd9_code) AS sub_1
+		WHERE dx.subject_id = sub_1.subject_id
+		AND dx.hadm_id = sub_1.hadm_id
+		AND dx.icd9_code = sub_1.icd9_code
+		) AS l
+	ON a.subject_id = l.subject_id
+	AND a.hadm_id = l.hadm_id
+
+INNER JOIN patients p
+	ON a.subject_id = p.subject_id
+LEFT JOIN diagnoses_icd d
+	ON a.subject_id = d.subject_id
+	AND a.hadm_id = d.hadm_id
+LEFT JOIN d_icd_diagnoses di
+	ON d.icd9_code = di.icd9_code
+
+LEFT JOIN prescriptions pr
+	ON a.subject_id = pr.subject_id
+	AND a.hadm_id = pr.hadm_id
+GROUP BY 1,2,3,4,5,6,7,8,9,10,11
+
+		
+
