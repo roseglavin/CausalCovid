@@ -21,11 +21,16 @@ The general outline is as follows.
    data from different sources. 
    https://www.pnas.org/content/113/27/7345/tab-figures-data
 8. Try to establish root causes or at least identify latent factors contributing to the poor health of high comorbid patients
-
+# BELSTATEMENTS and BELCORONA 
+Contains  clone of Charlie Hoyts examples for CoronaWhy. Right now (at CoronaWhy) we are focused on building the pipeline for
+Jeremy Zucker's molecular causal project.  This is mainly infrastructure focused for now. Once the infrastructure (INDRA,PyBEl,BioDati curation) is in place, we can deploy the same process for the Risk Factors project. 
 # BNLEARN
 Contains some initial simple models with conditional probablity tables from pieces of early data. Purely PoC, idea generation.
 # Causal Fusion 
 COntains the output of very basic directed graphs created using Causal Fusion and tested against first round of MIMIC data
 # Documents 
 COntains initial project proposal and a presentation talking about the motivation. 
+In case more motivation is needed this study we just published, highlighting the issues we have with corona risk factors. 
+https://www.medrxiv.org/content/10.1101/2020.05.04.20090506v2.full.pdf
+
 
