@@ -16,6 +16,7 @@ These are the high level steps.
    We are using MIMICIII - retreived, cleaned and stored in MIMIC. We will go back for more data rather than just Risk Factor Flags 
 3. COllect Observational data from clinical experience of COVID 
    We are using tables from Research Data . Initially Guan, Grasselli and xie studies.
+   
    https://erj.ersjournals.com/content/early/2020/03/17/13993003.00547-2020
    https://jamanetwork.com/journals/jama/fullarticle/2764365?widget=personalizedcontent&previousarticle=2763401
    https://jamanetwork.com/journals/jama/fullarticle/2765184
@@ -39,9 +40,9 @@ Jeremy Zucker's molecular causal project.  This is mainly infrastructure focused
 # BNLEARN
 Contains some initial simple models with conditional probablity tables from pieces of early data. Purely PoC, idea generation.
 # Causal Fusion 
-COntains the output of very basic directed graphs created using Causal Fusion and tested against first round of MIMIC data
+Contains the output of very basic directed graphs created using Causal Fusion and tested against first round of MIMIC data
 # Documents 
-COntains initial project proposal and a presentation talking about the motivation. 
+Contains initial project proposal and a presentation talking about the motivation. 
 In case more motivation is needed this study we just published, highlighting the issues we have with corona risk factors. 
 https://www.medrxiv.org/content/10.1101/2020.05.04.20090506v2.full.pdf
 
